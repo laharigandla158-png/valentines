@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Propose Day – Bangaram</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  overflow:hidden;
+}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,0.18);
+  color:white;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  width:340px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  position:relative;
+}
+
+h2{
+  margin-bottom:10px;
+}
+
+p{
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* Buttons */
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  margin:10px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4d6d;
+  color:white;
+}
+
+#no{
+  background:#f1f1f1;
+  color:#333;
+  position:absolute;
+}
+
+/* Full screen photo */
+#photoScreen{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:black;
+}
+
+#photoScreen img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h2>💍 Propose Day 💍</h2>
+  <p id="message">
+    Bangaram…<br>
+    I don’t know the perfect words,<br>
+    but my heart already chose you.<br><br>
+    Will you be mine?
+  </p>
+
+  <button id="yes" onclick="yesClick()">Yes</button>
+  <button id="no" onclick="noClick()">No</button>
+</div>
+
+<!-- Full screen photo -->
+<div id="photoScreen">
+  <img src="photo.jpg" alt="Bangaram">
+</div>
+
+<script>
+let noMessages = [
+  "Bangaram… please think once more.",
+  "I may not be perfect, but my feelings are real.",
+  "Even silence from you means something to me.",
+  "I’ll wait… because you are worth waiting for.",
+  "Some hearts don’t give up that easily."
+];
+
+let count = 0;
+
+function noClick(){
+  const msg = document.getElementById("message");
+  const noBtn = document.getElementById("no");
+
+  msg.innerText = noMessages[count % noMessages.length];
+  count++;
+
+  let x = Math.random() * 200 - 100;
+  let y = Math.random() * 150 - 75;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function yesClick(){
+  document.getElementById("card").style.display = "none";
+  document.getElementById("photoScreen").style.display = "block";
+}
+</script>
+
+</body>
+</html>
